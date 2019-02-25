@@ -1,11 +1,11 @@
 import { createStackNavigator } from 'react-navigation'
 
-import PassengerList from '../screens/PassengerList'
+import PassengersContainer from '../screens/PassengersContainer'
 
 export default createStackNavigator(
   {
     Home: {
-      screen: PassengerList,
+      screen: PassengersContainer,
       navigationOptions: {
         header: () => null,
         headerTitle: 'Home',
