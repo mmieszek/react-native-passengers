@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { Text, StatusBar, View } from 'react-native'
 
 class PassengerList extends Component {
   componentDidMount() {
-    //
+    const { fetchFirstPassenger } = this.props
+    fetchFirstPassenger()
   }
 
   render() {
@@ -17,5 +19,7 @@ class PassengerList extends Component {
     )
   }
 }
-
+PassengerList.propTypes = {
+  fetchFirstPassenger: PropTypes.func.isRequired,
+}
 export default PassengerList
