@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Text, StatusBar, View } from 'react-native'
+import PassengerItem from './PassengerItem'
+import AdditionalTravellers from './AdditionalTravellers'
 
 class PassengerList extends Component {
   componentDidMount() {
@@ -9,11 +11,17 @@ class PassengerList extends Component {
   }
 
   render() {
+    const { firstPassenger, additionalPassengers } = this.props
     return (
       <View style={{ flex: 1 }}>
         <StatusBar translucent={false} barStyle="default" />
         <View style={{ paddingTop: 20 }}>
-          <Text>Passenger List Screen</Text>
+          <Text>Main traveller (this must be you, the account holder)</Text>
+          {firstPassenger && <PassengerItem {...firstPassenger} />}
+          <Text>Additional Travellers</Text>
+          {additionalPassengers && (
+            <AdditionalTravellers additionalPassengers={additionalPassengers} />
+          )}
         </View>
       </View>
     )
@@ -21,5 +29,7 @@ class PassengerList extends Component {
 }
 PassengerList.propTypes = {
   fetchFirstPassenger: PropTypes.func.isRequired,
+  firstPassenger: PropTypes.object,
+  additionalPassengers: PropTypes.object,
 }
 export default PassengerList
