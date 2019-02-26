@@ -7,10 +7,10 @@ import Avatar from './Avatar'
 const TravellersRibbon = ({ travellers }) => (
   <Container>
     <Text>Choose from friends, or add new traveller</Text>
-    <Ribbon>
+    <Ribbon horizontal>
       {travellers &&
         travellers.map(traveller => (
-          <AvatarWithName key={traveller.firstName + traveller.lastName}>
+          <AvatarWithName key={traveller.type}>
             <Avatar avatarNumber={traveller.avatar} color={traveller.color} />
             <Text>{traveller.firstName}</Text>
           </AvatarWithName>
@@ -29,7 +29,7 @@ const AvatarWithName = styled.View`
   align-items: center;
   margin-right: 15px;
 `
-const Ribbon = styled.View`
+const Ribbon = styled.ScrollView`
   flex-direction: row;
   margin-top: 20px;
 `
@@ -39,8 +39,11 @@ TravellersRibbon.propTypes = {
 function mapStatToProps(state) {
   return {
     travellers: [{ type: 'first' }, ...state.passengers.configuration]
-      .map(configItem => state.passengers.all[configItem.type])
-      .filter(traveller => traveller),
+      .filter(configItem => state.passengers.all[configItem.type])
+      .map(configItem => ({
+        ...state.passengers.all[configItem.type],
+        type: configItem.type,
+      })),
   }
 }
 export default connect(mapStatToProps)(TravellersRibbon)

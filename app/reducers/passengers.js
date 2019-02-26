@@ -6,6 +6,10 @@ const initialState = {
     { type: 'adult2', label: 'Adult 2' },
     { type: 'adult3', label: 'Adult 3' },
     { type: 'child1', label: 'Child 1' },
+    { type: 'child2', label: 'Adult 2' },
+    { type: 'child3', label: 'Adult 3' },
+    { type: 'child4', label: 'Child 4' },
+    { type: 'child5', label: 'Child 5' },
   ],
   formValid: false,
 }
