@@ -1,23 +1,21 @@
 import React from 'react'
 import styled from 'styled-components/native'
-import doge from './assets/doge.png'
+import { MaterialCommunityIcons } from '@expo/vector-icons'
 
-const Avatar = () => (
+const AvatarPlaceholder = () => (
   <Container>
-    <Image source={doge} resizeMode="contain" />
+    <MaterialCommunityIcons name="plus" size={48} color="#23afe3" />
   </Container>
 )
 const Container = styled.View`
   height: 60px;
   width: 60px;
   border-width: 3px;
-  border-color: #fed464;
+  border-color: #23afe3;
+  border-style: dashed;
   border-radius: 30px;
   align-items: center;
   justify-content: center;
 `
-const Image = styled.Image`
-  height: 40px;
-  width: 40px;
-`
-export default Avatar
+
+export default AvatarPlaceholder

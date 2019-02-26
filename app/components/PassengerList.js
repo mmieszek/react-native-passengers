@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import { Text, StatusBar, View } from 'react-native'
 import PassengerItem from './PassengerItem'
 import AdditionalTravellers from './AdditionalTravellers'
+import AddTravellerItem from './AddTravellerItem'
 
 class PassengerList extends Component {
   componentDidMount() {
@@ -22,6 +23,7 @@ class PassengerList extends Component {
           {additionalPassengers && (
             <AdditionalTravellers additionalPassengers={additionalPassengers} />
           )}
+          <AddTravellerItem description="Enter Adult 2 Information" />
         </View>
       </View>
     )
