@@ -1,8 +1,12 @@
 import * as ActionTypes from '../actions/actionTypes'
 
 const initialState = {
-  first: null,
-  additional: {},
+  all: {},
+  configuration: [
+    { type: 'adult2', label: 'Adult 2' },
+    { type: 'adult3', label: 'Adult 3' },
+    { type: 'child1', label: 'Child 1' },
+  ],
 }
 
 export default (state = initialState, action) => {
@@ -11,10 +15,13 @@ export default (state = initialState, action) => {
       const { type, passenger, color, avatar } = action.payload
       return {
         ...state,
-        [type]: {
-          ...passenger,
-          color,
-          avatar,
+        all: {
+          ...state.all,
+          [type]: {
+            ...passenger,
+            color,
+            avatar,
+          },
         },
       }
     }
