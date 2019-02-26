@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { Button } from 'react-native'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/native'
 import DatePicker from 'react-native-datepicker'
@@ -7,6 +6,7 @@ import DatePicker from 'react-native-datepicker'
 import AddTravellerHeader from './AddTravellerHeader'
 import ScreenContainer from './ScreenContainer'
 import Input from './Input'
+import HeaderRightButton from './HeaderRightButton'
 
 class AddTraveller extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -18,11 +18,7 @@ class AddTraveller extends Component {
       backgroundColor: 'transparent',
     },
     headerRight: (
-      <Button
-        onPress={navigation.getParam('done') || (() => {})}
-        title="Done"
-        color="#fff"
-      />
+      <HeaderRightButton onPress={navigation.getParam('done') || (() => {})} />
     ),
   })
 
@@ -49,6 +45,14 @@ class AddTraveller extends Component {
   componentDidMount() {
     const { navigation } = this.props
     navigation.setParams({ done: this.done })
+    this.validate()
+  }
+
+  validate = () => {
+    const { title, firstName, lastName, dateOfBirth } = this.state
+    const { setFormValid } = this.props
+    const isValid = title && firstName && lastName && dateOfBirth
+    setFormValid(!!isValid)
   }
 
   done = () => {
@@ -72,13 +76,14 @@ class AddTraveller extends Component {
     navigation.goBack()
   }
 
-  changeTitle = title => this.setState({ title })
+  changeTitle = title => this.setState({ title }, this.validate)
 
-  changeFirstName = firstName => this.setState({ firstName })
+  changeFirstName = firstName => this.setState({ firstName }, this.validate)
 
-  changeLastName = lastName => this.setState({ lastName })
+  changeLastName = lastName => this.setState({ lastName }, this.validate)
 
-  changeDateOfBirth = dateOfBirth => this.setState({ dateOfBirth })
+  changeDateOfBirth = dateOfBirth =>
+    this.setState({ dateOfBirth }, this.validate)
 
   render() {
     const { title, firstName, lastName, dateOfBirth } = this.state
@@ -136,6 +141,7 @@ class AddTraveller extends Component {
 AddTraveller.propTypes = {
   navigation: PropTypes.object.isRequired,
   savePassenger: PropTypes.func.isRequired,
+  setFormValid: PropTypes.func.isRequired,
   title: PropTypes.string,
   firstName: PropTypes.string,
   lastName: PropTypes.string,

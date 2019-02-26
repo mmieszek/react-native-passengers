@@ -7,6 +7,7 @@ const initialState = {
     { type: 'adult3', label: 'Adult 3' },
     { type: 'child1', label: 'Child 1' },
   ],
+  formValid: false,
 }
 
 export default (state = initialState, action) => {
@@ -25,6 +26,11 @@ export default (state = initialState, action) => {
         },
       }
     }
+    case ActionTypes.SET_FORM_VALID:
+      return {
+        ...state,
+        formValid: action.payload,
+      }
     default:
       return state
   }

@@ -13,6 +13,12 @@ export function savePassenger(type, passenger) {
     payload: { type, passenger, avatar, color },
   }
 }
+export function setFormValid(isValid) {
+  return {
+    type: ActionTypes.SET_FORM_VALID,
+    payload: isValid,
+  }
+}
 export function fetchStarted() {
   return {
     type: ActionTypes.FETCH_STARTED,

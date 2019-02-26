@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import AddTraveller from '../components/AddTraveller'
-import { savePassenger } from '../actions/passengerListActions'
+import { savePassenger, setFormValid } from '../actions/passengerListActions'
 
 function mapStateToProps(state, props) {
   const traveller = state.passengers.all[props.navigation.getParam('type')]
@@ -10,6 +10,7 @@ function mapStateToProps(state, props) {
 }
 const mapDispatchToProps = {
   savePassenger,
+  setFormValid,
 }
 export default connect(
   mapStateToProps,
