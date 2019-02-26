@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Button } from 'react-native'
 import PropTypes from 'prop-types'
 import styled from 'styled-components/native'
+import DatePicker from 'react-native-datepicker'
 
 import AddTravellerHeader from './AddTravellerHeader'
 import ScreenContainer from './ScreenContainer'
@@ -99,10 +100,34 @@ class AddTraveller extends Component {
           value={lastName}
           onChangeText={this.changeLastName}
         />
-        <Input
+        <DatePicker
+          style={{
+            width: null,
+            backgroundColor: '#f2f2f4',
+            height: 50,
+            alignSelf: 'stretch',
+            borderRadius: 10,
+            padding: 5,
+            marginTop: 15,
+            borderWidth: 0,
+          }}
+          date={dateOfBirth}
+          mode="date"
+          showIcon={false}
           placeholder="Date of Birth"
-          value={dateOfBirth}
-          onChangeText={this.changeDateOfBirth}
+          format="YYYY-MM-DD"
+          confirmBtnText="Confirm"
+          cancelBtnText="Cancel"
+          customStyles={{
+            dateInput: {
+              borderWidth: 0,
+              alignItems: 'flex-start',
+            },
+            placeholderText: {
+              color: '#AEAEAF',
+            },
+          }}
+          onDateChange={this.changeDateOfBirth}
         />
       </ScreenContainer>
     )
