@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components/native'
 import DatePicker from 'react-native-datepicker'
 
 import AddTravellerHeader from './AddTravellerHeader'
 import ScreenContainer from './ScreenContainer'
 import Input from './Input'
 import HeaderRightButton from './HeaderRightButton'
+import Title from './Title'
 
 class AddTraveller extends Component {
   static navigationOptions = ({ navigation }) => ({
@@ -149,5 +149,4 @@ AddTraveller.propTypes = {
   avatar: PropTypes.number,
   color: PropTypes.string,
 }
-const Title = styled.Text``
 export default AddTraveller

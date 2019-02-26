@@ -12,8 +12,8 @@ const EditButton = ({ onPress = () => {} }) => (
 )
 const Button = styled.View`
   background-color: #fc4e50;
-  height: 30px;
-  width: 50px;
+  height: 40px;
+  width: 70px;
   border-radius: 8px;
   align-items: center;
   justify-content: center;

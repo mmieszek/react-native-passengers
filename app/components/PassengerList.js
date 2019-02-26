@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { Text, StatusBar, View } from 'react-native'
+import { StatusBar, View } from 'react-native'
 import ScreenContainer from './ScreenContainer'
 import PassengerItem from './PassengerItem'
 import AdditionalTravellers from './AdditionalTravellers'
+import Title from './Title'
 
 class PassengerList extends Component {
   static navigationOptions = {
@@ -36,11 +37,11 @@ class PassengerList extends Component {
       <ScreenContainer>
         <StatusBar translucent={false} barStyle="light-content" />
         <View style={{ paddingTop: 20 }}>
-          <Text>Main traveller (this must be you, the account holder)</Text>
+          <Title>Main traveller (this must be you, the account holder)</Title>
           {firstPassenger && (
             <PassengerItem {...firstPassenger} onEdit={this.onEdit} />
           )}
-          <Text>Additional Travellers</Text>
+          <Title>Additional Travellers</Title>
           {group.map(traveller => (
             <AdditionalTravellers
               key={traveller.type}
