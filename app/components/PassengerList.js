@@ -7,6 +7,15 @@ import AdditionalTravellers from './AdditionalTravellers'
 import AddTravellerItem from './AddTravellerItem'
 
 class PassengerList extends Component {
+  static navigationOptions = {
+    headerTitle: "WHO'S TRAVELLING?",
+    headerTintColor: '#fff',
+    headerBackTitle: null,
+    headerStyle: {
+      backgroundColor: '#596CD4',
+    },
+  }
+
   componentDidMount() {
     const { fetchFirstPassenger } = this.props
     fetchFirstPassenger()
