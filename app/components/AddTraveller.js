@@ -27,12 +27,21 @@ class AddTraveller extends Component {
 
   constructor(props) {
     super(props)
-    const { title, firstName, lastName, dateOfBirth } = this.props
+    const {
+      title,
+      firstName,
+      lastName,
+      dateOfBirth,
+      avatar,
+      color,
+    } = this.props
     this.state = {
       title,
       firstName,
       lastName,
       dateOfBirth,
+      avatar,
+      color,
     }
   }
 
@@ -43,12 +52,21 @@ class AddTraveller extends Component {
 
   done = () => {
     const { savePassenger, navigation } = this.props
-    const { firstName, lastName, title, dateOfBirth } = this.state
+    const {
+      firstName,
+      lastName,
+      title,
+      dateOfBirth,
+      avatar,
+      color,
+    } = this.state
     savePassenger(navigation.getParam('type'), {
       firstName,
       lastName,
       title,
       dateOfBirth,
+      avatar,
+      color,
     })
     navigation.goBack()
   }

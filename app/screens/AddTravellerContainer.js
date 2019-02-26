@@ -3,7 +3,7 @@ import AddTraveller from '../components/AddTraveller'
 import { savePassenger } from '../actions/passengerListActions'
 
 function mapStateToProps(state, props) {
-  const traveller = state.passengers[props.navigation.getParam('type')]
+  const traveller = state.passengers.all[props.navigation.getParam('type')]
   return {
     ...traveller,
   }

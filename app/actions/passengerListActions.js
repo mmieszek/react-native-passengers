@@ -2,10 +2,12 @@ import { Alert } from 'react-native'
 import * as ActionTypes from './actionTypes'
 
 export function savePassenger(type, passenger) {
-  const avatar = Math.floor(Math.random() * 10)
-  const color = `rgb(${Math.floor(Math.random() * 266)}, ${Math.floor(
-    Math.random() * 266,
-  )}, ${Math.floor(Math.random() * 266)})`
+  const avatar = passenger.avatar || Math.floor(Math.random() * 10)
+  const color =
+    passenger.color ||
+    `rgb(${Math.floor(Math.random() * 266)}, ${Math.floor(
+      Math.random() * 266,
+    )}, ${Math.floor(Math.random() * 266)})`
   return {
     type: ActionTypes.SAVE_PASSENGER,
     payload: { type, passenger, avatar, color },
