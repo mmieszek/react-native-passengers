@@ -21,7 +21,7 @@ class PassengerList extends Component {
     const { firstPassenger, additionalPassengers } = this.props
     return (
       <ScreenContainer>
-        <StatusBar translucent={false} barStyle="default" />
+        <StatusBar translucent={false} barStyle="light-content" />
         <View style={{ paddingTop: 20 }}>
           <Text>Main traveller (this must be you, the account holder)</Text>
           {firstPassenger && (
