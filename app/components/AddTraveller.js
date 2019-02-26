@@ -25,6 +25,16 @@ class AddTraveller extends Component {
     ),
   })
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      title: '',
+      firstName: '',
+      lastName: '',
+      dateOfBirth: '',
+    }
+  }
+
   componentDidMount() {
     const { navigation } = this.props
     navigation.setParams({ done: this.done })
@@ -32,14 +42,39 @@ class AddTraveller extends Component {
 
   done = () => {}
 
+  changeTitle = ({ title }) => this.setState({ title })
+
+  changeFirstName = ({ firstName }) => this.setState({ firstName })
+
+  changeLastName = ({ lastName }) => this.setState({ lastName })
+
+  changeDateOfBirth = ({ dateOfBirth }) => this.setState({ dateOfBirth })
+
   render() {
+    const { title, firstName, lastName, dateOfBirth } = this.state
     return (
       <ScreenContainer>
         <Title>Add New Traveller</Title>
-        <Input placeholder="Title" />
-        <Input placeholder="First Name" />
-        <Input placeholder="Last Name" />
-        <Input placeholder="Date of Birth" />
+        <Input
+          placeholder="Title"
+          value={title}
+          onChangeText={this.changeTitle}
+        />
+        <Input
+          placeholder="First Name"
+          value={firstName}
+          onChangeText={this.changeFirstName}
+        />
+        <Input
+          placeholder="Last Name"
+          value={lastName}
+          onChangeText={this.changeLastName}
+        />
+        <Input
+          placeholder="Date of Birth"
+          value={dateOfBirth}
+          onChangeText={this.changeDateOfBirth}
+        />
       </ScreenContainer>
     )
   }
