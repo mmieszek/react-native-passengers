@@ -25,7 +25,7 @@ class PassengerList extends Component {
     navigation.navigate('AddPassenger', { type: 'first' })
   }
 
-  onNewTraveller = type => () => {
+  onEditAdditionalTraveller = type => () => {
     const { navigation } = this.props
     navigation.navigate('AddPassenger', { type })
   }
@@ -46,7 +46,9 @@ class PassengerList extends Component {
               key={traveller.type}
               traveller={allPassengers[traveller.type]}
               label={traveller.label}
-              onNewTraveller={this.onNewTraveller(traveller.type)}
+              onEditAdditionalTraveller={this.onEditAdditionalTraveller(
+                traveller.type,
+              )}
             />
           ))}
         </View>

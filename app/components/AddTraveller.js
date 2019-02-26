@@ -115,6 +115,8 @@ AddTraveller.propTypes = {
   firstName: PropTypes.string,
   lastName: PropTypes.string,
   dateOfBirth: PropTypes.string,
+  avatar: PropTypes.number,
+  color: PropTypes.string,
 }
 const Title = styled.Text``
 export default AddTraveller
