@@ -40,7 +40,16 @@ class AddTraveller extends Component {
     navigation.setParams({ done: this.done })
   }
 
-  done = () => {}
+  done = () => {
+    const { savePassenger, navigation } = this.props
+    const { firstName, lastName, title, dateOfBirth } = this.state
+    savePassenger(navigation.getParam('type'), {
+      firstName,
+      lastName,
+      title,
+      dateOfBirth,
+    })
+  }
 
   changeTitle = ({ title }) => this.setState({ title })
 
@@ -81,6 +90,7 @@ class AddTraveller extends Component {
 }
 AddTraveller.propTypes = {
   navigation: PropTypes.object.isRequired,
+  savePassenger: PropTypes.func.isRequired,
 }
 const Title = styled.Text``
 export default AddTraveller

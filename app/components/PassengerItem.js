@@ -10,11 +10,13 @@ const PassengerItem = ({
   lastName,
   title,
   dateOfBirth,
+  avatar,
+  color,
   onEdit = () => {},
 }) => (
   <PassengerItemContainer>
     <AvatarAndContent>
-      <Avatar />
+      <Avatar avatarNumber={avatar} color={color} />
       <Content>
         <Info>
           {firstName} {lastName}
@@ -41,6 +43,8 @@ PassengerItem.propTypes = {
   lastName: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   dateOfBirth: PropTypes.string.isRequired,
+  avatar: PropTypes.number.isRequired,
+  color: PropTypes.string.isRequired,
   onEdit: PropTypes.func,
 }
 export default PassengerItem

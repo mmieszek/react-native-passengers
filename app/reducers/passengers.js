@@ -2,7 +2,7 @@ import * as ActionTypes from '../actions/actionTypes'
 
 const initialState = {
   first: null,
-  additional: [],
+  additional: {},
 }
 
 export default (state = initialState, action) => {
@@ -10,7 +10,22 @@ export default (state = initialState, action) => {
     case ActionTypes.FIRST_PASSENGER_FETCHED: {
       return {
         ...state,
-        first: action.payload,
+        first: {
+          ...action.payload,
+          avatar: Math.floor(Math.random() * 10),
+          color: `rgb(${Math.floor(Math.random() * 266)}, ${Math.floor(
+            Math.random() * 266,
+          )}, ${Math.floor(Math.random() * 266)})`,
+        },
+      }
+    }
+    case ActionTypes.SAVE_PASSENGER: {
+      return {
+        ...state,
+        additional: {
+          ...state.additional,
+          [action.payload.type]: action.payload.passenger,
+        },
       }
     }
     default:

@@ -1,6 +1,12 @@
 import { Alert } from 'react-native'
 import * as ActionTypes from './actionTypes'
 
+export function savePassenger(type, passenger) {
+  return {
+    type: ActionTypes.SAVE_PASSENGER,
+    payload: { type, passenger },
+  }
+}
 export function firstPassengerFetched(firstPassenger) {
   return {
     type: ActionTypes.FIRST_PASSENGER_FETCHED,
