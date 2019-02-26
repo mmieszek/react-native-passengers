@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { StatusBar, View } from 'react-native'
+import { StatusBar, View, ActivityIndicator } from 'react-native'
 import ScreenContainer from './ScreenContainer'
 import PassengerItem from './PassengerItem'
 import AdditionalTravellers from './AdditionalTravellers'
@@ -38,8 +38,10 @@ class PassengerList extends Component {
         <StatusBar translucent={false} barStyle="light-content" />
         <View style={{ paddingTop: 20 }}>
           <Title>Main traveller (this must be you, the account holder)</Title>
-          {firstPassenger && (
+          {firstPassenger ? (
             <PassengerItem {...firstPassenger} onEdit={this.onEdit} />
+          ) : (
+            <ActivityIndicator />
           )}
           <Title>Additional Travellers</Title>
           {group.map(traveller => (

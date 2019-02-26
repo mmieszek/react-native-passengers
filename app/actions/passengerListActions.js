@@ -2,6 +2,7 @@ import { Alert } from 'react-native'
 import * as ActionTypes from './actionTypes'
 
 export function savePassenger(type, passenger) {
+  // Pick random avatar and color if it is not set. This happens only for new paseengers.
   const avatar = passenger.avatar || Math.floor(Math.random() * 10)
   const color =
     passenger.color ||
@@ -19,6 +20,8 @@ export function setFormValid(isValid) {
     payload: isValid,
   }
 }
+
+// Actions for more advanced fetching control.
 export function fetchStarted() {
   return {
     type: ActionTypes.FETCH_STARTED,

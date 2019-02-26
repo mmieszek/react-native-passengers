@@ -6,8 +6,6 @@ function mapStateToProps(state) {
   return {
     firstPassenger: state.passengers.all.first,
     allPassengers: state.passengers.all,
-    // Make trip configuration dynamic as this data comes from
-    // previous screen not in the scope of this technical test.
     group: state.passengers.configuration,
   }
 }
