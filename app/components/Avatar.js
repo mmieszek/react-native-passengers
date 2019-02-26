@@ -16,6 +16,7 @@ const Container = styled.View`
   border-radius: 30px;
   align-items: center;
   justify-content: center;
+  background-color: white;
 `
 const Image = styled.Image`
   height: 40px;
