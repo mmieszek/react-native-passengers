@@ -9,7 +9,7 @@ import Input from './Input'
 
 class AddTraveller extends Component {
   static navigationOptions = ({ navigation }) => ({
-    title: 'Welcome',
+    title: 'ENTER TRAVELLER',
     header: AddTravellerHeader,
     headerTintColor: '#fff',
     headerStyle: {
@@ -27,11 +27,12 @@ class AddTraveller extends Component {
 
   constructor(props) {
     super(props)
+    const { title, firstName, lastName, dateOfBirth } = this.props
     this.state = {
-      title: '',
-      firstName: '',
-      lastName: '',
-      dateOfBirth: '',
+      title,
+      firstName,
+      lastName,
+      dateOfBirth,
     }
   }
 
@@ -49,15 +50,16 @@ class AddTraveller extends Component {
       title,
       dateOfBirth,
     })
+    navigation.goBack()
   }
 
-  changeTitle = ({ title }) => this.setState({ title })
+  changeTitle = title => this.setState({ title })
 
-  changeFirstName = ({ firstName }) => this.setState({ firstName })
+  changeFirstName = firstName => this.setState({ firstName })
 
-  changeLastName = ({ lastName }) => this.setState({ lastName })
+  changeLastName = lastName => this.setState({ lastName })
 
-  changeDateOfBirth = ({ dateOfBirth }) => this.setState({ dateOfBirth })
+  changeDateOfBirth = dateOfBirth => this.setState({ dateOfBirth })
 
   render() {
     const { title, firstName, lastName, dateOfBirth } = this.state
@@ -91,6 +93,10 @@ class AddTraveller extends Component {
 AddTraveller.propTypes = {
   navigation: PropTypes.object.isRequired,
   savePassenger: PropTypes.func.isRequired,
+  title: PropTypes.string,
+  firstName: PropTypes.string,
+  lastName: PropTypes.string,
+  dateOfBirth: PropTypes.string,
 }
 const Title = styled.Text``
 export default AddTraveller

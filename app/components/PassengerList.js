@@ -4,7 +4,6 @@ import { Text, StatusBar, View } from 'react-native'
 import ScreenContainer from './ScreenContainer'
 import PassengerItem from './PassengerItem'
 import AdditionalTravellers from './AdditionalTravellers'
-import AddTravellerItem from './AddTravellerItem'
 
 class PassengerList extends Component {
   static navigationOptions = {
@@ -23,11 +22,16 @@ class PassengerList extends Component {
 
   onEdit = () => {
     const { navigation } = this.props
-    navigation.navigate('AddPassenger')
+    navigation.navigate('AddPassenger', { type: 'first' })
+  }
+
+  onNewTraveller = type => () => {
+    const { navigation } = this.props
+    navigation.navigate('AddPassenger', { type })
   }
 
   render() {
-    const { firstPassenger, additionalPassengers } = this.props
+    const { firstPassenger, allPassengers, group } = this.props
     return (
       <ScreenContainer>
         <StatusBar translucent={false} barStyle="light-content" />
@@ -37,10 +41,14 @@ class PassengerList extends Component {
             <PassengerItem {...firstPassenger} onEdit={this.onEdit} />
           )}
           <Text>Additional Travellers</Text>
-          {additionalPassengers && (
-            <AdditionalTravellers additionalPassengers={additionalPassengers} />
-          )}
-          <AddTravellerItem description="Enter Adult 2 Information" />
+          {group.map(traveller => (
+            <AdditionalTravellers
+              key={traveller.type}
+              traveller={allPassengers[traveller.type]}
+              label={traveller.label}
+              onNewTraveller={this.onNewTraveller(traveller.type)}
+            />
+          ))}
         </View>
       </ScreenContainer>
     )
